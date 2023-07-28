@@ -24,7 +24,7 @@ Add this dependency to your project's `pom.xml` file:
 <dependency>
     <groupId>com.unimtx</groupId>
     <artifactId>uni-sdk</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
 </dependency>
 ```
 
@@ -33,7 +33,7 @@ Add this dependency to your project's `pom.xml` file:
 Add this dependency to your project's `build.gradle` file:
 
 ```bash
-implementation "com.unimtx:uni-sdk:0.2.0"
+implementation "com.unimtx:uni-sdk:0.3.0"
 ```
 
 ## Usage

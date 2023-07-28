@@ -6,7 +6,7 @@
 
   <groupId>com.unimtx</groupId>
   <artifactId>uni-sdk</artifactId>
-  <version>0.2.0</version>
+  <version>0.3.0</version>
 
   <name>Unimatrix Java SDK</name>
   <description>The official Unimatrix SDK for Java.</description>

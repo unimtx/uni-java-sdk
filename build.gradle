@@ -25,7 +25,7 @@ apply plugin: 'signing'
 
 group = 'com.unimtx'
 archivesBaseName = 'uni-sdk'
-version = '0.2.0'
+version = '0.3.0'
 description = 'The official Unimatrix SDK for Java.'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8

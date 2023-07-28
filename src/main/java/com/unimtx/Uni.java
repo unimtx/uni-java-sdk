@@ -4,8 +4,7 @@ package com.unimtx;
  * Singleton class to initialize Uni environment.
  */
 public class Uni {
-    public static final String VERSION = "0.2.0";
-
+    public static final String VERSION = "0.3.0";
     public static String signingAlgorithm = "hmac-sha256";
     public static String endpoint = System.getenv().getOrDefault("UNIMTX_ENDPOINT", "https://api.unimtx.com");
 
