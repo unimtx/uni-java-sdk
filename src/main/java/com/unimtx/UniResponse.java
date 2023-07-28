@@ -12,6 +12,7 @@ public class UniResponse {
     public int status;
     public JSONObject data = null;
     public Object raw;
+    public Boolean valid;
 
     /**
      * Create a new Uni Response.

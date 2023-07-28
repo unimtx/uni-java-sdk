@@ -7,13 +7,18 @@ public class Uni {
     public static final String VERSION = "0.2.0";
 
     public static String signingAlgorithm = "hmac-sha256";
-    public static String endpoint = System.getenv().getOrDefault("UNI_ENDPOINT", "https://api.unimtx.com");
-    public static String accessKeyId = System.getenv("UNI_ACCESS_KEY_ID");
+    public static String endpoint = System.getenv().getOrDefault("UNIMTX_ENDPOINT", "https://api.unimtx.com");
 
-    private static String accessKeySecret = System.getenv("UNI_ACCESS_KEY_SECRET");
+    private static String accessKeyId = System.getenv("UNIMTX_ACCESS_KEY_ID");
+    private static String accessKeySecret = System.getenv("UNIMTX_ACCESS_KEY_SECRET");
     private static volatile UniClient client;
 
     private Uni() {}
+
+    /**
+     * Initialize.
+     */
+    public static void init() {}
 
     /**
      * Initialize the Uni environment (simple auth mode).
@@ -91,7 +96,11 @@ public class Uni {
     }
 
     private static UniClient buildClient() {
-        UniClient.Builder builder = new UniClient.Builder(Uni.accessKeyId);
+        UniClient.Builder builder = new UniClient.Builder();
+
+        if (Uni.accessKeyId != null) {
+            builder.accessKeyId(Uni.accessKeyId);
+        }
 
         if (Uni.accessKeySecret != null) {
             builder.accessKeySecret(Uni.accessKeySecret);

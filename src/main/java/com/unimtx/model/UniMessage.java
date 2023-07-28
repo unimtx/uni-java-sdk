@@ -22,6 +22,14 @@ public class UniMessage {
      */
     private UniMessage() {}
 
+    public static UniMessage build() {
+        return new UniMessage();
+    }
+
+    /**
+     * @deprecated Create a new Uni Message. Use `build()` instead.
+     * @return UniMessage object
+     */
     public static UniMessage buildMessage() {
         return new UniMessage();
     }
@@ -29,7 +37,7 @@ public class UniMessage {
     /**
      * Set the recipient phone number.
      *
-     * @param phoneNumber phone number
+     * @param phoneNumber phone number (in E.164 format)
      * @return UniMessage object
      */
     public UniMessage setTo(final String phoneNumber) {
@@ -41,7 +49,7 @@ public class UniMessage {
     /**
      * Set multiple recipient phone numbers.
      *
-     * @param phoneNumbers phone numbers
+     * @param phoneNumbers phone numbers (in E.164 format)
      * @return UniMessage object
      */
     public UniMessage setTo(final String[] phoneNumbers) {

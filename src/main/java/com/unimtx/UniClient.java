@@ -114,6 +114,8 @@ public class UniClient {
         private String endpoint;
         private String signingAlgorithm;
 
+        public Builder() {}
+
         public Builder(final String accessKeyId) {
             this.accessKeyId = accessKeyId;
         }
@@ -121,6 +123,11 @@ public class UniClient {
         public Builder(final String accessKeyId, final String accessKeySecret) {
             this.accessKeyId = accessKeyId;
             this.accessKeySecret = accessKeySecret;
+        }
+
+        public Builder accessKeyId(final String accessKeyId) {
+            this.accessKeyId = accessKeyId;
+            return this;
         }
 
         public Builder accessKeySecret(final String accessKeySecret) {

@@ -40,16 +40,14 @@ implementation "com.unimtx:uni-sdk:0.2.0"
 
 The following example shows how to use the Unimatrix Java SDK to interact with Unimatrix services.
 
-### Send SMS
-
-Send a text message to a single recipient.
+### Initialization
 
 ```java
-
 import com.unimtx.Uni;
 import com.unimtx.UniException;
 import com.unimtx.UniResponse;
 import com.unimtx.model.UniMessage;
+import com.unimtx.model.UniOtp;
 
 public class Example {
     public static String ACCESS_KEY_ID = "your access key id";
@@ -57,11 +55,29 @@ public class Example {
 
     public static void main(String[] args) {
         Uni.init(ACCESS_KEY_ID, ACCESS_KEY_SECRET);
+    }
+}
+```
 
-        UniMessage message = UniMessage.buildMessage()
-            .setTo("your phone number") // in E.164 format
-            .setSignature("your sender name")
-            .setContent("Your verification code is 2048.");
+or you can configure your credentials by environment variables:
+
+```sh
+export UNIMTX_ACCESS_KEY_ID=your_access_key_id
+export UNIMTX_ACCESS_KEY_SECRET=your_access_key_secret
+```
+
+### Send SMS
+
+Send a text message to a single recipient.
+
+```java
+class Example {
+    public static void main(String[] args) {
+        Uni.init();
+
+        UniMessage message = UniMessage.build()
+            .setTo("+1206880xxxx") // in E.164 format
+            .setText("Your verification code is 2048.");
 
         try {
             UniResponse res = message.send();
@@ -72,7 +88,43 @@ public class Example {
         }
     }
 }
+```
 
+### Send verification code
+
+Send a one-time passcode (OTP) to a recipient. The following example will automatically generate a verification code.
+
+```java
+class Example {
+    public static void main(String[] args) {
+        Uni.init();
+
+        UniResponse res = UniOtp.build()
+            .setTo("+1206880xxxx")
+            .send();
+
+        System.out.println(res.data);
+    }
+}
+```
+
+### Check verification code
+
+Verify the one-time passcode (OTP) that a user provided. The following example will check whether the user-provided verification code is correct.
+
+```java
+class Example {
+    public static void main(String[] args) {
+        Uni.init();
+
+        UniResponse ret = UniOtp.build()
+            .setTo("+1206880xxxx")
+            .setCode("123456") // the code user provided
+            .verify();
+
+        System.out.println(ret.valid);
+    }
+}
 ```
 
 ## Reference
