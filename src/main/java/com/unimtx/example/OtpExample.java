@@ -6,7 +6,7 @@ import com.unimtx.UniResponse;
 import com.unimtx.model.UniOtp;
 
 public class OtpExample {
-    public static String ACCESS_KEY_ID = System.getenv().getOrDefault("UNIMTX_ACCESS_KEY_ID", "your access key id");
+    private static String ACCESS_KEY_ID = System.getenv().getOrDefault("UNIMTX_ACCESS_KEY_ID", "your access key id");
     private static String ACCESS_KEY_SECRET = System.getenv().getOrDefault("UNIMTX_ACCESS_KEY_SECRET", "your access key secret");
 
     // send a verification code to a recipient

@@ -6,7 +6,7 @@ import com.unimtx.UniResponse;
 import com.unimtx.model.UniMessage;
 
 public class SendExample {
-    public static String ACCESS_KEY_ID = System.getenv().getOrDefault("UNIMTX_ACCESS_KEY_ID", "your access key id");
+    private static String ACCESS_KEY_ID = System.getenv().getOrDefault("UNIMTX_ACCESS_KEY_ID", "your access key id");
     private static String ACCESS_KEY_SECRET = System.getenv().getOrDefault("UNIMTX_ACCESS_KEY_SECRET", "your access key secret");
 
     public static void main(String[] args) {
