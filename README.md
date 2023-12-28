@@ -44,13 +44,9 @@ The following example shows how to use the Unimatrix Java SDK to interact with U
 
 ```java
 import com.unimtx.Uni;
-import com.unimtx.UniException;
-import com.unimtx.UniResponse;
-import com.unimtx.model.UniMessage;
-import com.unimtx.model.UniOtp;
 
 public class Example {
-    public static String ACCESS_KEY_ID = "your access key id";
+    private static String ACCESS_KEY_ID = "your access key id";
     private static String ACCESS_KEY_SECRET = "your access key secret";
 
     public static void main(String[] args) {
@@ -71,6 +67,11 @@ export UNIMTX_ACCESS_KEY_SECRET=your_access_key_secret
 Send a text message to a single recipient.
 
 ```java
+import com.unimtx.Uni;
+import com.unimtx.UniException;
+import com.unimtx.UniResponse;
+import com.unimtx.model.UniMessage;
+
 class Example {
     public static void main(String[] args) {
         Uni.init();
@@ -92,9 +93,13 @@ class Example {
 
 ### Send verification code
 
-Send a one-time passcode (OTP) to a recipient. The following example will automatically generate a verification code.
+Send a one-time passcode (OTP) to a recipient. The following example will send a automatically generated verification code to the user.
 
 ```java
+import com.unimtx.Uni;
+import com.unimtx.UniResponse;
+import com.unimtx.model.UniOtp;
+
 class Example {
     public static void main(String[] args) {
         Uni.init();
@@ -113,16 +118,20 @@ class Example {
 Verify the one-time passcode (OTP) that a user provided. The following example will check whether the user-provided verification code is correct.
 
 ```java
+import com.unimtx.Uni;
+import com.unimtx.UniResponse;
+import com.unimtx.model.UniOtp;
+
 class Example {
     public static void main(String[] args) {
         Uni.init();
 
-        UniResponse ret = UniOtp.build()
+        UniResponse res = UniOtp.build()
             .setTo("+1206880xxxx")
             .setCode("123456") // the code user provided
             .verify();
 
-        System.out.println(ret.valid);
+        System.out.println(res.valid);
     }
 }
 ```
